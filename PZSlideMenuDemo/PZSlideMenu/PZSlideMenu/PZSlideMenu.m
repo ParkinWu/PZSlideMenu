@@ -42,12 +42,13 @@ static PZSlideMenu * menu = nil;
         self.viewControllers = VCs;
         self.leftVC = leftVC;
         
-        
+        self.leftVC.view.frame = [[UIScreen mainScreen] bounds];
         
         _currentVC = [self.viewControllers firstObject];
         [self.contentView addSubview:_currentVC.view];
         
         for (UIViewController *vc in VCs) {
+            vc.view.frame = [[UIScreen mainScreen] bounds];
             [self addChildViewController:vc];
         }
         
@@ -99,8 +100,6 @@ static PZSlideMenu * menu = nil;
     }
 }
 - (void)pan:(UIPanGestureRecognizer *)panGesture {
-
-    
     CGPoint offsetPoint = [panGesture translationInView:self.view];
     if (panGesture.state == UIGestureRecognizerStateChanged) {
         [self transitionViewWithOffset:_currentOffset + offsetPoint.x];
@@ -135,6 +134,9 @@ static PZSlideMenu * menu = nil;
     _currentOffset = 0;
 }
 - (void)transitionViewWithOffset:(CGFloat)offset {
+    if (offset <0) {
+        return;
+    }
     //大小
     CGFloat ratio = 1 - ((1 - self.scale) / self.openOffset * offset);
     ratio = MAX(ratio, self.scale);
