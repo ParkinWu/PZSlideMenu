@@ -59,4 +59,4 @@
 ```
 
 #效果图
-![效果图](http://7xil26.com1.z0.glb.clouddn.com/PZSlideMenu.gif)
+![效果图](http://7xil26.com1.z0.glb.clouddn.com/PZSlideMenu480.gif)
