@@ -42,7 +42,7 @@ static PZSlideMenu * menu = nil;
         
         self.viewControllers = VCs;
         self.leftVC = leftVC;
-        
+        self.leftVC.view.frame = [[UIScreen mainScreen] bounds];
         
         
         _currentVC = [self.viewControllers firstObject];
@@ -50,6 +50,7 @@ static PZSlideMenu * menu = nil;
         
         for (UIViewController *vc in VCs) {
             [self addChildViewController:vc];
+            vc.view.frame = [[UIScreen mainScreen] bounds];
         }
         
         _currentOpenedIndex = [self.viewControllers indexOfObject:_currentVC];

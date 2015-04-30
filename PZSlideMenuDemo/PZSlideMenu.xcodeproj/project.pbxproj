@@ -12,7 +12,7 @@
 		D44FDE261AEF6EF800F6F7F4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44FDE251AEF6EF800F6F7F4 /* Images.xcassets */; };
 		D44FDE291AEF6EF800F6F7F4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D44FDE271AEF6EF800F6F7F4 /* LaunchScreen.xib */; };
 		D44FDE351AEF6EF800F6F7F4 /* PZSlideMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D44FDE341AEF6EF800F6F7F4 /* PZSlideMenuTests.m */; };
-		D44FDE411AEF704D00F6F7F4 /* PZSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D44FDE401AEF704D00F6F7F4 /* PZSlideMenu.m */; };
+		D454BEA11AF20A4F006C094A /* PZSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D454BEA01AF20A4F006C094A /* PZSlideMenu.m */; };
 		D4E6F92C1AF06BB1007A12AC /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F92A1AF06BB1007A12AC /* RootViewController.m */; };
 		D4E6F92D1AF06BB1007A12AC /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E6F92B1AF06BB1007A12AC /* RootViewController.xib */; };
 		D4E6F9311AF06BC7007A12AC /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F92F1AF06BC7007A12AC /* LeftViewController.m */; };
@@ -42,8 +42,8 @@
 		D44FDE2E1AEF6EF800F6F7F4 /* PZSlideMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PZSlideMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44FDE331AEF6EF800F6F7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D44FDE341AEF6EF800F6F7F4 /* PZSlideMenuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PZSlideMenuTests.m; sourceTree = "<group>"; };
-		D44FDE3F1AEF704D00F6F7F4 /* PZSlideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZSlideMenu.h; sourceTree = "<group>"; };
-		D44FDE401AEF704D00F6F7F4 /* PZSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZSlideMenu.m; sourceTree = "<group>"; };
+		D454BE9F1AF20A4F006C094A /* PZSlideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZSlideMenu.h; sourceTree = "<group>"; };
+		D454BEA01AF20A4F006C094A /* PZSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZSlideMenu.m; sourceTree = "<group>"; };
 		D4E6F9291AF06BB1007A12AC /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		D4E6F92A1AF06BB1007A12AC /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		D4E6F92B1AF06BB1007A12AC /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 				D4E6F92E1AF06BC7007A12AC /* LeftViewController.h */,
 				D4E6F92F1AF06BC7007A12AC /* LeftViewController.m */,
 				D4E6F9301AF06BC7007A12AC /* LeftViewController.xib */,
-				D44FDE3E1AEF703300F6F7F4 /* PZSlideMenu */,
+				D454BE9E1AF20A4F006C094A /* PZSlideMenu */,
 				D44FDE251AEF6EF800F6F7F4 /* Images.xcassets */,
 				D44FDE271AEF6EF800F6F7F4 /* LaunchScreen.xib */,
 				D44FDE181AEF6EF800F6F7F4 /* Supporting Files */,
@@ -139,13 +139,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D44FDE3E1AEF703300F6F7F4 /* PZSlideMenu */ = {
+		D454BE9E1AF20A4F006C094A /* PZSlideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				D44FDE3F1AEF704D00F6F7F4 /* PZSlideMenu.h */,
-				D44FDE401AEF704D00F6F7F4 /* PZSlideMenu.m */,
+				D454BE9F1AF20A4F006C094A /* PZSlideMenu.h */,
+				D454BEA01AF20A4F006C094A /* PZSlideMenu.m */,
 			);
-			path = PZSlideMenu;
+			name = PZSlideMenu;
+			path = ../../PZSlideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,8 +251,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D454BEA11AF20A4F006C094A /* PZSlideMenu.m in Sources */,
 				D4E6F9361AF06BDC007A12AC /* SecondViewController.m in Sources */,
-				D44FDE411AEF704D00F6F7F4 /* PZSlideMenu.m in Sources */,
 				D4E6F9311AF06BC7007A12AC /* LeftViewController.m in Sources */,
 				D44FDE1E1AEF6EF800F6F7F4 /* AppDelegate.m in Sources */,
 				D4E6F92C1AF06BB1007A12AC /* RootViewController.m in Sources */,
