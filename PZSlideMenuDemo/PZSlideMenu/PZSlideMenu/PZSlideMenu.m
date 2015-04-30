@@ -14,6 +14,7 @@ static PZSlideMenu * menu = nil;
 }
 @property (nonatomic, strong) UIView * contentView;
 @property (nonatomic, strong) UIViewController * leftVC;
+
 @end
 
 @implementation PZSlideMenu
@@ -42,13 +43,12 @@ static PZSlideMenu * menu = nil;
         self.viewControllers = VCs;
         self.leftVC = leftVC;
         
-        self.leftVC.view.frame = [[UIScreen mainScreen] bounds];
+        
         
         _currentVC = [self.viewControllers firstObject];
         [self.contentView addSubview:_currentVC.view];
         
         for (UIViewController *vc in VCs) {
-            vc.view.frame = [[UIScreen mainScreen] bounds];
             [self addChildViewController:vc];
         }
         
@@ -63,6 +63,9 @@ static PZSlideMenu * menu = nil;
 - (void)showLeftMenu {
     [self openLeftVCWithAnimation];
 }
+- (void)closeLeftMenu {
+    [self closeLeftVCWithAnimation];
+}
 /**
  @ 切换到第几个controller
  */
@@ -75,7 +78,7 @@ static PZSlideMenu * menu = nil;
     NSAssert(index < self.viewControllers.count, @"index 越界!");
     if (_currentOpenedIndex != index) {
         UIViewController * newVC = [self.viewControllers objectAtIndex:index];
-        [self transitionFromViewController:_currentVC toViewController:newVC duration:0.1 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [self transitionFromViewController:_currentVC toViewController:newVC duration:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         } completion:^(BOOL finished) {
 
             if (finished) {
@@ -88,18 +91,22 @@ static PZSlideMenu * menu = nil;
 }
 - (void)setupGesture {
     
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    tap.delegate = self;
     [self.contentView addGestureRecognizer:tap];
     
     UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
     [self.contentView addGestureRecognizer:pan];
 }
 - (void)tap:(UITapGestureRecognizer *)tapGesture {
+    
     if (_currentOffset > 0) {
         [self closeLeftVCWithAnimation];
     }
 }
 - (void)pan:(UIPanGestureRecognizer *)panGesture {
+
+    
     CGPoint offsetPoint = [panGesture translationInView:self.view];
     if (panGesture.state == UIGestureRecognizerStateChanged) {
         [self transitionViewWithOffset:_currentOffset + offsetPoint.x];
@@ -117,6 +124,13 @@ static PZSlideMenu * menu = nil;
     }
     
 }
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if (_currentOffset > 0) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
 - (void)openLeftVCWithAnimation {
 
     [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -127,14 +141,14 @@ static PZSlideMenu * menu = nil;
     _currentOffset = self.openOffset;
 }
 - (void)closeLeftVCWithAnimation {
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self transitionViewWithOffset:0];
-    }];
+    } completion:nil];
 
     _currentOffset = 0;
 }
 - (void)transitionViewWithOffset:(CGFloat)offset {
-    if (offset <0) {
+    if (offset < 0) {
         return;
     }
     //大小
@@ -153,7 +167,10 @@ static PZSlideMenu * menu = nil;
     
     
 }
-
+- (BOOL)isOpened {
+    
+    return _currentOffset > 0;
+}
 - (CGFloat)openOffset {
     if (_openOffset <= 0) {
         return 150;

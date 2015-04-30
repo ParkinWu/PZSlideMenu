@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PZSlideMenu : UIViewController
+@interface PZSlideMenu : UIViewController<UIGestureRecognizerDelegate>
 /**
  @ 所管理的viewControllers
  */
@@ -29,7 +29,7 @@
 /**
  @ 是否打开leftVC
  */
-@property (nonatomic, assign,readonly) BOOL isOpened;
+@property (nonatomic, assign) BOOL isOpened;
 + (instancetype)shareInstance;
 /**
  @ 初始化
@@ -41,6 +41,10 @@
  @ 打开菜单
  */
 - (void)showLeftMenu;
+/**
+ @ 关闭菜单
+ */
+- (void)closeLeftMenu;
 /**
  @ 切换到第几个controller
  */
